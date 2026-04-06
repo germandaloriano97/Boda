@@ -23,7 +23,7 @@
         <h1 class="text-5xl md:text-7xl mb-4 uppercase tracking-widest">Nuestra Boda</h1>
         <p class="text-xl md:text-2xl italic max-w-2xl px-4">"Bendecidos por el camino, afortunados por el destino y agradecidos de corazón por tenerte a nuestro lado."</p>
         <div class="mt-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20">
-            <div id="countdown" class="text-4xl font-bold flex gap-4 md:gap-8"></div>
+        <div id="countdown" class="flex items-center justify-center gap-1 md:gap-2 font-bold"></div>
         </div>
     </header>
 
@@ -127,32 +127,54 @@
     </footer>
 
     <script>
-        const weddingDate = new Date('April 25, 2026 09:00:00').getTime();
+    const weddingDate = new Date('April 25, 2026 09:00:00').getTime();
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
         
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
-            
-            if (diff <= 0) {
-                document.getElementById('countdown').innerHTML = "<span class='uppercase tracking-[0.2em]'>¡Es hoy!</span>";
-                return;
-            }
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            document.getElementById('countdown').innerHTML = `
-                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${days}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70">Días</span></div>
-                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${hours}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70">Hrs</span></div>
-                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${mins}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70">Min</span></div>
-                <div class="text-center w-16 md:w-20 text-stone-400"><span class="block text-2xl md:text-4xl">${secs}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70 text-white">Seg</span></div>
-            `;
+        if (diff <= 0) {
+            document.getElementById('countdown').innerHTML = "<span class='uppercase tracking-[0.2em] text-2xl'>¡Llegó el gran día!</span>";
+            return;
         }
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    </script>
+        // Formato con ceros iniciales para estética constante
+        const fH = hours.toString().padStart(2, '0');
+        const fM = mins.toString().padStart(2, '0');
+        const fS = secs.toString().padStart(2, '0');
+
+        const separator = `<span class="text-xl md:text-3xl opacity-50 self-start mt-1 md:mt-2">:</span>`;
+
+        document.getElementById('countdown').innerHTML = `
+            <div class="flex flex-col items-center">
+                <span class="text-2xl md:text-5xl">${days}</span>
+                <span class="text-[8px] uppercase tracking-tighter opacity-70">Días</span>
+            </div>
+            ${separator}
+            <div class="flex flex-col items-center">
+                <span class="text-2xl md:text-5xl">${fH}</span>
+                <span class="text-[8px] uppercase tracking-tighter opacity-70">Hrs</span>
+            </div>
+            ${separator}
+            <div class="flex flex-col items-center">
+                <span class="text-2xl md:text-5xl">${fM}</span>
+                <span class="text-[8px] uppercase tracking-tighter opacity-70">Min</span>
+            </div>
+            ${separator}
+            <div class="flex flex-col items-center text-stone-400">
+                <span class="text-2xl md:text-5xl">${fS}</span>
+                <span class="text-[8px] uppercase tracking-tighter opacity-70 text-white">Seg</span>
+            </div>
+        `;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+</script>
 </body>
 </html>
