@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - 25 de Abril</title>
+    <title>Nuestra Boda - Yasmin & Germán</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -15,9 +15,6 @@
             background-position: center;
         }
         .btn-hover:hover { transform: scale(1.05); transition: 0.3s; }
-        .bg-gold-gradient {
-            background: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b8860b 100%);
-        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
@@ -26,7 +23,7 @@
         <h1 class="text-5xl md:text-7xl mb-4 uppercase tracking-widest">Nuestra Boda</h1>
         <p class="text-xl md:text-2xl italic max-w-2xl px-4">"Bendecidos por el camino, afortunados por el destino y agradecidos de corazón por tenerte a nuestro lado."</p>
         <div class="mt-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20">
-            <div id="countdown" class="text-4xl font-bold flex gap-8"></div>
+            <div id="countdown" class="text-4xl font-bold flex gap-4 md:gap-8"></div>
         </div>
     </header>
 
@@ -76,9 +73,9 @@
                 <div class="bg-stone-800/50 p-6 rounded-2xl border border-stone-700 text-center flex flex-col justify-between shadow-xl">
                     <div>
                         <h3 class="text-xl mb-4 text-white uppercase tracking-wider">¡Sube tus Fotos!</h3>
-                        <p class="mb-6 text-stone-400 font-light italic text-xs">Ayúdanos a capturar cada ángulo. Sube aquí tus fotos y videos de forma segura.</p>
+                        <p class="mb-6 text-stone-400 font-light italic text-xs">Comparte tus momentos de forma segura y privada a través de nuestro formulario.</p>
                     </div>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfL3p0YfmYyG4klB-QlY4-Zcr0A335GNTaUsJPyWm0ZD3HSHg/viewform?usp=publish-editor" target="_blank"
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfL3p0YfmYyG4klB-QlY4-Zcr0A335GNTaUsJPyWm0ZD3HSHg/viewform" target="_blank"
                        class="inline-block bg-green-700 text-white px-6 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-[10px] tracking-widest hover:bg-green-600 transition-all">
                        Cargar Archivos
                     </a>
@@ -89,7 +86,7 @@
                         <h3 class="text-xl mb-4 text-white uppercase tracking-wider">Fotos de Invitados</h3>
                         <p class="mb-6 text-stone-400 font-light italic text-xs">Mira los momentos capturados por nuestros amigos y familiares durante la fiesta.</p>
                     </div>
-                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchEvMhYURWAxQDB2JWk47uobkb9d2IUFom293vbqNvf64ykQ/viewform?usp=publish-editor" target="_blank"
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSchEvMhYURWAxQDB2JWk47uobkb9d2IUFom293vbqNvf64ykQ/viewform" target="_blank"
                        class="inline-block border-2 border-white text-white px-6 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-[10px] tracking-widest hover:bg-white hover:text-stone-900 transition-all">
                        Visualizar Fotos Invitados
                     </a>
@@ -98,16 +95,11 @@
                 <div class="bg-stone-800/50 p-6 rounded-2xl border border-stone-700 text-center flex flex-col justify-between shadow-xl">
                     <div>
                         <h3 class="text-xl mb-4 text-white uppercase tracking-wider">Galería Oficial</h3>
-                        <p class="mb-6 text-stone-400 font-light italic text-xs">El lente profesional de nuestra boda. Disponible próximamente para revivir la magia.</p>
+                        <p class="mb-6 text-stone-400 font-light italic text-xs">El lente profesional de nuestra boda. Revive la magia con las fotos oficiales.</p>
                     </div>
                     <a href="https://drive.google.com/drive/folders/1ZOd1zyvWtxbdqCpv9s_VaFeamvU-8znR?usp=sharing" target="_blank"
                        class="inline-block bg-white text-stone-900 px-6 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-[10px] tracking-widest border-2 border-transparent hover:bg-stone-900 hover:text-white hover:border-white transition-all">
                        Visualizar Fotos Oficiales
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
                     </a>
                 </div>
             </div>
@@ -142,24 +134,23 @@
             const diff = weddingDate - now;
             
             if (diff <= 0) {
-                document.getElementById('countdown').innerHTML = "<span class='uppercase tracking-[0.2em]'>¡Llegó el gran día!</span>";
+                document.getElementById('countdown').innerHTML = "<span class='uppercase tracking-[0.2em]'>¡Es hoy!</span>";
                 return;
             }
             
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000); // Nueva constante para segundos
+            const secs = Math.floor((diff % (1000 * 60)) / 1000);
             
             document.getElementById('countdown').innerHTML = `
-                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${days}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70 font-light">Días</span></div>
-                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${hours}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70 font-light">Hrs</span></div>
-                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${mins}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70 font-light">Min</span></div>
-                <div class="text-center w-16 md:w-20 text-stone-400"><span class="block text-2xl md:text-4xl">${secs}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70 font-light text-white">Seg</span></div>
+                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${days}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70">Días</span></div>
+                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${hours}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70">Hrs</span></div>
+                <div class="text-center w-16 md:w-20"><span class="block text-2xl md:text-4xl">${mins}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70">Min</span></div>
+                <div class="text-center w-16 md:w-20 text-stone-400"><span class="block text-2xl md:text-4xl">${secs}</span><span class="text-[9px] md:text-[10px] uppercase tracking-widest opacity-70 text-white">Seg</span></div>
             `;
         }
 
-        // Actualización cada 1 segundo (1000ms)
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
