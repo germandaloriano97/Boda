@@ -15,21 +15,23 @@
             background-position: center;
         }
         .btn-hover:hover { transform: scale(1.05); transition: 0.3s; }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #d4af37 0%, #f9f295 50%, #b8860b 100%);
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
 
-    <header class="hero-bg h-screen flex flex-col items-center justify-center text-white text-center px-4">
+    <header class="hero-bg h-screen flex flex-col items-center justify-center text-white text-center px-4 shadow-2xl">
         <h1 class="text-5xl md:text-7xl mb-4 uppercase tracking-widest">Nuestra Boda</h1>
         <p class="text-xl md:text-2xl italic max-w-2xl px-4">"Bendecidos por el camino, afortunados por el destino y agradecidos de corazón por tenerte a nuestro lado."</p>
         <div class="mt-10 bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20">
-            <div id="countdown" class="text-4xl font-bold flex gap-8">
-                </div>
+            <div id="countdown" class="text-4xl font-bold flex gap-8"></div>
         </div>
     </header>
 
     <section class="max-w-4xl mx-auto py-24 px-6">
-        <h2 class="text-3xl text-center mb-16 border-b border-stone-300 pb-4 italic">Sábado 25 de Abril, 2026</h2>
+        <h2 class="text-3xl text-center mb-16 border-b border-stone-300 pb-4 italic tracking-widest">Sábado 25 de Abril, 2026</h2>
         
         <div class="space-y-12">
             <div class="flex flex-col md:flex-row items-center md:items-start gap-8 text-center md:text-left">
@@ -52,7 +54,7 @@
                 <div class="bg-stone-800 text-white p-4 rounded-lg font-bold min-w-[100px] shadow-md">15:00</div>
                 <div>
                     <h3 class="text-xl font-bold uppercase tracking-wider text-stone-700">Ceremonia Religiosa</h3>
-                    <p class="text-stone-600 mt-2 italic">Caminata tradicional de 30 minutos desde el hogar hacia la parroquia.</p>
+                    <p class="text-stone-600 mt-2 italic text-sm">Caminata tradicional hacia la parroquia (30 min aprox).</p>
                 </div>
             </div>
 
@@ -60,23 +62,45 @@
                 <div class="bg-stone-800 text-white p-4 rounded-lg font-bold min-w-[100px] shadow-md">17:00</div>
                 <div>
                     <h3 class="text-xl font-bold uppercase tracking-wider text-stone-700">Recepción y Fiesta</h3>
-                    <p class="text-stone-600 mt-2">Regreso a casa para disfrutar del banquete, brindis y baile inolvidable.</p>
+                    <p class="text-stone-600 mt-2">Regreso a casa para disfrutar del banquete y baile hasta el amanecer.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-stone-900 text-stone-100 py-20 px-6 shadow-inner">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl mb-6 uppercase tracking-widest text-white">Captura la Magia</h2>
-            <p class="mb-10 text-stone-400 font-light text-lg italic">
-                Queremos ver la boda a través de tus ojos. Comparte tus fotos y videos en nuestro álbum digital para conservarlos por siempre.
-            </p>
-            <a href="https://drive.google.com/drive/folders/1zsva62B1CipCC4gP_RaOmBsnvh_uqk1f?usp=sharing" 
-               target="_blank"
-               class="inline-block bg-white text-stone-900 px-12 py-5 rounded-full font-bold shadow-2xl btn-hover uppercase text-sm tracking-[0.2em] border-2 border-transparent hover:bg-stone-900 hover:text-white hover:border-white transition-all">
-               Subir fotos al álbum
-            </a>
+    <section class="bg-stone-900 text-stone-100 py-24 px-6 border-y-4 border-stone-800">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-3xl text-center mb-16 uppercase tracking-[0.3em] text-white">Nuestras Memorias</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-stone-800/50 p-8 rounded-2xl border border-stone-700 text-center flex flex-col justify-between shadow-xl">
+                    <div>
+                        <h3 class="text-2xl mb-4 text-white uppercase tracking-wider">Galería Oficial</h3>
+                        <p class="mb-8 text-stone-400 font-light italic text-sm">
+                            Revive los momentos más espectaculares a través del lente de nuestro fotógrafo profesional.
+                        </p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1ZOd1zyvWtxbdqCpv9s_VaFeamvU-8znR?usp=sharing" 
+                       target="_blank"
+                       class="inline-block bg-white text-stone-900 px-8 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-xs tracking-widest border-2 border-transparent hover:bg-stone-900 hover:text-white hover:border-white transition-all">
+                       Ver Fotos Oficiales
+                    </a>
+                </div>
+
+                <div class="bg-stone-800/50 p-8 rounded-2xl border border-stone-700 text-center flex flex-col justify-between shadow-xl">
+                    <div>
+                        <h3 class="text-2xl mb-4 text-white uppercase tracking-wider">Álbum de Invitados</h3>
+                        <p class="mb-8 text-stone-400 font-light italic text-sm">
+                            ¡Tú también fuiste parte! Sube aquí todas las fotos y videos que capturaste durante la celebración.
+                        </p>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1zsva62B1CipCC4gP_RaOmBsnvh_uqk1f?usp=sharing" 
+                       target="_blank"
+                       class="inline-block border-2 border-white text-white px-8 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-xs tracking-widest hover:bg-white hover:text-stone-900 transition-all">
+                       Compartir mis fotos
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -90,11 +114,11 @@
             </a>
             <a href="https://www.google.com/maps/place/Libertad+13,+90180+San+Pedro+Xalcaltzinco,+Tlax./@19.2250884,-98.2263585,17z/data=!3m1!4b1!4m6!3m5!1s0x85cfdb638edc04f3:0xbdbd731ea96b0cb0!8m2!3d19.2250884!4d-98.2263585!16s%2Fg%2F11k5pl9yr4!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDQwMS4wIKXMDSoASAFQAw%3D%3D" 
                target="_blank"
-               class="bg-white text-stone-800 border-2 border-stone-800 px-10 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-xs tracking-widest flex items-center gap-2">
-               <span>Ver Ubicación</span>
+               class="bg-white text-stone-800 border-2 border-stone-800 px-10 py-4 rounded-full font-bold shadow-lg btn-hover uppercase text-xs tracking-widest">
+               Ver Ubicación
             </a>
         </div>
-        <p class="mt-10 text-sm text-stone-500 italic tracking-wide">San Pedro Xalcaltzinco, Tlaxcala.</p>
+        <p class="mt-10 text-sm text-stone-500 italic">San Pedro Xalcaltzinco, Tlaxcala.</p>
     </section>
 
     <footer class="py-12 text-center text-xs text-stone-400 uppercase tracking-[0.3em] bg-stone-50">
@@ -103,27 +127,22 @@
 
     <script>
         const weddingDate = new Date('April 25, 2026 09:00:00').getTime();
-        
         function updateCountdown() {
             const now = new Date().getTime();
             const diff = weddingDate - now;
-            
             if (diff <= 0) {
                 document.getElementById('countdown').innerHTML = "<span class='uppercase tracking-[0.2em]'>¡Llegó el gran día!</span>";
                 return;
             }
-            
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            
             document.getElementById('countdown').innerHTML = `
-                <div class="text-center"><span class="block">${days}</span><span class="text-[10px] uppercase tracking-widest opacity-70 font-light">Días</span></div>
-                <div class="text-center"><span class="block">${hours}</span><span class="text-[10px] uppercase tracking-widest opacity-70 font-light">Horas</span></div>
-                <div class="text-center"><span class="block">${mins}</span><span class="text-[10px] uppercase tracking-widest opacity-70 font-light">Minutos</span></div>
+                <div class="text-center"><span class="block">${days}</span><span class="text-[10px] uppercase tracking-widest opacity-70">Días</span></div>
+                <div class="text-center"><span class="block">${hours}</span><span class="text-[10px] uppercase tracking-widest opacity-70">Hrs</span></div>
+                <div class="text-center"><span class="block">${mins}</span><span class="text-[10px] uppercase tracking-widest opacity-70">Min</span></div>
             `;
         }
-
         setInterval(updateCountdown, 1000);
         updateCountdown();
     </script>
