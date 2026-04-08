@@ -54,7 +54,7 @@
     </header>
 
     <section class="section-full bg-white">
-        <h2 class="text-2xl mb-10 uppercase tracking-widest text-stone-400">Nuestra Historia en Fotos</h2>
+        <h2 class="text-3xl text-center mb-16 border-b border-stone-200 pb-4 italic tracking-widest">Nuestra Historia en Fotos</h2>
         <div class="carousel-container shadow-2xl">
             <div class="carousel-slide" id="carouselSlide">
                 <img src="./Fotosnovios/1.jpg" class="carousel-item" alt="Foto 1">
@@ -82,25 +82,25 @@
                 </div>
                 <div class="ml-6">
                     <span class="absolute -left-[11px] w-5 h-5 bg-stone-800 rounded-full border-4 border-white"></span>
-                    <h3 class="text-stone-400 font-bold uppercase text-xs">Sábado 25 • 09:00</h3>
+                    <h3 class="text-stone-500 font-bold uppercase tracking-tighter text-sm">Sábado 25 • 09:00</h3>
                     <h4 class="text-xl font-bold text-stone-800">Pedimento</h4>
                     <p class="text-stone-600 text-sm mt-1">En compañía del sacerdote vamos hacia el hogar de la novia con canastas cargadas de dulces y chocolates para que el novio pida a sus padres la mano de su hija.</p>
                 </div>
                 <div class="ml-6">
                     <span class="absolute -left-[11px] w-5 h-5 bg-stone-800 rounded-full border-4 border-white"></span>
-                    <h3 class="text-stone-400 font-bold uppercase text-xs">Sábado 25 • 10:00</h3>
+                    <h3 class="text-stone-500 font-bold uppercase tracking-tighter text-sm">Sábado 25 • 10:00</h3>
                     <h4 class="text-xl font-bold text-stone-800">Boda Civil</h4>
                     <p class="text-stone-600 text-sm mt-1">"Celebración legal en nuestro hogar".</p>
                 </div>
                 <div class="ml-6">
                     <span class="absolute -left-[11px] w-5 h-5 bg-stone-800 rounded-full border-4 border-white"></span>
-                    <h3 class="text-stone-400 font-bold uppercase text-xs">Sábado 25 • 15:00</h3>
+                    <h3 class="text-stone-500 font-bold uppercase tracking-tighter text-sm">Sábado 25 • 15:00</h3>
                     <h4 class="text-xl font-bold text-stone-800">Ceremonia Religiosa</h4>
                     <p class="text-stone-600 text-sm mt-1">"Señor, bendice nuestra unión y hazla signo de tu amor eterno".</p>
                 </div>
                 <div class="ml-6">
                     <span class="absolute -left-[11px] w-5 h-5 bg-stone-800 rounded-full border-4 border-white"></span>
-                    <h3 class="text-stone-400 font-bold uppercase text-xs">Sábado 25 • 17:00</h3>
+                    <h3 class="text-stone-500 font-bold uppercase tracking-tighter text-sm">Sábado 25 • 17:00</h3>
                     <h4 class="text-xl font-bold text-stone-800">Recepción y Fiesta</h4>
                     <p class="text-stone-600 text-sm mt-1">Regresamos a nuestro hogar para dar inicio a la celebración. Será un honor contar con su presencia en el banquete y el brindis de honor.</p>
                     <br><br>
@@ -207,7 +207,8 @@
                 <p class="text-xs uppercase opacity-70 mb-2 tracking-widest">Banco Azteca</p>
                 <p class="text-xl md:text-3xl font-mono font-bold tracking-tighter">127180001347662369</p>
             </div>
-            <p class="mt-10 text-xs tracking-widest uppercase">¡Gracias por su generosidad!</p>
+            <p class="mt-12 text-sm uppercase tracking-[0.4em] font-light animate-pulse">
+                ¡Gracias por su generosidad y cariño!</p>
         </div>
     </section>
 
@@ -241,10 +242,13 @@
             const h = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2,'0');
             const m = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2,'0');
             const s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2,'0');
+            const sep = `<span class="text-xl md:text-2xl opacity-40 px-0.5 mt-[-4px]">:</span>`;
             container.innerHTML = `
-                <div class="mb-2 border-b border-white/20 pb-2 w-full"><span class="text-4xl md:text-6xl font-light">${d}</span><span class="text-xs ml-2 uppercase">Días</span></div>
-                <div class="flex items-center text-xl md:text-3xl font-mono">
-                    <span>${h}</span><span class="mx-1 opacity-40">:</span><span>${m}</span><span class="mx-1 opacity-40">:</span><span class="text-stone-400">${s}</span>
+                <div class="mb-2 border-b border-white/20 pb-2 w-full"><span class="text-3xl md:text-5xl font-light tracking-widest">${days}</span><span class="text-xs ml-2">Días</span></div>
+                <div class="flex items-center font-mono text-xl md:text-3xl">
+                    <div class="flex flex-col"><span>${hours}</span><span class="text-[7px] opacity-60">Hrs</span></div>${sep}
+                    <div class="flex flex-col"><span>${mins}</span><span class="text-[7px] opacity-60">Min</span></div>${sep}
+                    <div class="flex flex-col text-stone-300"><span>${secs}</span><span class="text-[7px] opacity-60 text-white">Seg</span></div>
                 </div>`;
         }
         setInterval(updateCountdown, 1000); updateCountdown();
