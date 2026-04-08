@@ -244,11 +244,9 @@
             const s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2,'0');
             const sep = `<span class="text-xl md:text-2xl opacity-40 px-0.5 mt-[-4px]">:</span>`;
             container.innerHTML = `
-                <div class="mb-2 border-b border-white/20 pb-2 w-full"><span class="text-3xl md:text-5xl font-light tracking-widest">${days}</span><span class="text-xs ml-2">Días</span></div>
-                <div class="flex items-center font-mono text-xl md:text-3xl">
-                    <div class="flex flex-col"><span>${hours}</span><span class="text-[7px] opacity-60">Hrs</span></div>${sep}
-                    <div class="flex flex-col"><span>${mins}</span><span class="text-[7px] opacity-60">Min</span></div>${sep}
-                    <div class="flex flex-col text-stone-300"><span>${secs}</span><span class="text-[7px] opacity-60 text-white">Seg</span></div>
+                <div class="mb-2 border-b border-white/20 pb-2 w-full"><span class="text-4xl md:text-6xl font-light">${d}</span><span class="text-xs ml-2 uppercase">Días</span></div>
+                <div class="flex items-center text-xl md:text-3xl font-mono">
+                    <span>${h}</span><span class="mx-1 opacity-40">:</span><span>${m}</span><span class="mx-1 opacity-40">:</span><span class="text-stone-400">${s}</span>
                 </div>`;
         }
         setInterval(updateCountdown, 1000); updateCountdown();
