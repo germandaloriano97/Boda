@@ -15,11 +15,13 @@
         /* Contenedores Full Screen */
         .section-full { 
             min-height: 100vh; 
+            width: 100%;
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
             align-items: center;
-            padding: 2rem 1rem;
+            position: relative;
+            overflow: hidden;
         }
 
         /* Hero Background con imagen específica */
@@ -30,19 +32,19 @@
             background-position: center;
         }
 
-        /* Contenedor de Video corregido */
-        .video-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* Contenedor de Video Independiente */
+        .video-container {
             width: 100%;
-            height: 100%;
-            z-index: 1;
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .video-wrapper video {
+        .video-container video {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Para que llene la pantalla sin barras negras */
+            object-fit: cover; /* Asegura 16:9 llenando la pantalla */
         }
 
         /* Fondo Regalo para Gesto de Cariño */
@@ -70,15 +72,15 @@
     </header>
 
     <section class="section-full bg-black">
-        <div class="video-wrapper">
-            <video id="invitationVideo" playsinline autoplay loop muted class="shadow-2xl">
+        <div class="absolute inset-0">
+            <video id="invitationVideo" playsinline autoplay loop muted>
                 <source src="./Fotosnovios/Invitacion.mp4" type="video/mp4">
-                Tu navegador no soporta el formato de video.
             </video>
         </div>
-        <div class="relative z-20 mt-auto mb-10">
-            <button onclick="toggleMute()" id="muteBtn" class="bg-white/20 backdrop-blur-lg text-white text-xs uppercase tracking-[0.2em] px-6 py-3 rounded-full border border-white/40 hover:bg-white/40 transition-all flex items-center gap-3">
-                <span id="muteIcon">🔇</span> <span id="muteText">Activar Sonido</span>
+        
+        <div class="absolute bottom-10 right-10 z-30">
+            <button onclick="toggleAudio()" id="audioBtn" class="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/40 hover:bg-white/40 transition-all text-white text-2xl shadow-xl">
+                <span id="volIcon">🔇</span>
             </button>
         </div>
     </section>
@@ -98,24 +100,6 @@
             <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/50 text-white p-3 rounded-full backdrop-blur-sm transition">❯</button>
         </div>
     </section>
-
-    <script>
-        // Lógica de Audio para el Video
-        function toggleMute() {
-            const video = document.getElementById('invitationVideo');
-            const btnText = document.getElementById('muteText');
-            const btnIcon = document.getElementById('muteIcon');
-            
-            if (video.muted) {
-                video.muted = false;
-                btnText.innerText = "Desactivar Sonido";
-                btnIcon.innerText = "🔊";
-            } else {
-                video.muted = true;
-                btnText.innerText = "Activar Sonido";
-                btnIcon.innerText = "🔇";
-            }
-    </script>
  
     <section class="section-full bg-stone-50">
         <div class="max-w-4xl w-full">
@@ -267,6 +251,20 @@
     </footer>
 
     <script>
+        // Lógica de Audio para el Video
+        function toggleAudio() {
+            const video = document.getElementById('invitationVideo');
+            const icon = document.getElementById('volIcon');
+            
+            if (video.muted) {
+                video.muted = false;
+                icon.innerText = "🔊";
+            } else {
+                video.muted = true;
+                icon.innerText = "🔇";
+            }
+        }
+        
         // Carrusel
         let currentSlide = 0;
         const slide = document.getElementById('carouselSlide');
