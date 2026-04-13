@@ -33,17 +33,44 @@
 
         /* Contenedor de Video Independiente */
         .video-container {
-            width: 100%;
             height: 100vh;
+            width: 100%;
+            position: relative;
             background-color: #000;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Asegura 16:9 llenando la pantalla */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover; /* Esto elimina las franjas negras
+        }
+
+        /* Botón flotante elegante */
+        .audio-control {
+            position: absolute;
+            bottom: 30px;
+            right: 20px;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         /* Fondo Regalo para Gesto de Cariño */
@@ -60,6 +87,7 @@
         .carousel-item { min-width: 100%; height: 70vh; object-fit: cover; }
     </style>
 </head>
+    
 <body class="bg-stone-50 text-stone-800">
 
     <header class="section-full hero-bg text-white text-center shadow-2xl">
@@ -70,17 +98,13 @@
         </div>
     </header>
 
-    <section class="section-full bg-black">
-        <div class="absolute inset-0">
-            <video id="invitationVideo" playsinline autoplay loop muted>
-                <source src="./Fotosnovios/Invitacion.mp4" type="video/mp4">
-            </video>
-        </div>
-        
-        <div class="absolute bottom-10 right-10 z-30">
-            <button onclick="toggleAudio()" id="audioBtn" class="bg-white/20 backdrop-blur-md p-4 rounded-full border border-white/40 hover:bg-white/40 transition-all text-white text-2xl shadow-xl">
-                <span id="volIcon">🔇</span>
-            </button>
+    <section class="video-section">
+        <video id="invitationVideo" playsinline autoplay loop muted>
+            <source src="./Fotosnovios/Invitacion.mp4" type="video/mp4">
+        </video>
+
+        <div class="audio-control" onclick="toggleAudio()">
+            <span id="volIcon" style="font-size: 20px; color: white;">🔇</span>
         </div>
     </section>
 
