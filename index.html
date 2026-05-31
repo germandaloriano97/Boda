@@ -300,25 +300,61 @@
         function prevSlide() { showSlide(currentSlide - 1); }
         setInterval(nextSlide, 5000);
 
-        // Countdown
-        const weddingDate = new Date('April 25, 2026 09:00:00').getTime();
+        // Contador de Tiempo Juntos (Años, Meses, Días)
+        const weddingDate = new Date('April 25, 2026 09:00:00');
+        
         function updateCountdown() {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
+            const now = new Date();
             const container = document.getElementById('countdown');
-            if (diff <= 0) { container.innerHTML = "¡Es hoy!"; return; }
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2,'0');
-            const m = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2,'0');
-            const s = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2,'0');
-            const sep = `<span class="text-xl md:text-2xl opacity-40 px-0.5 mt-[-4px]">:</span>`;
+            
+            // Si por alguna razón la fecha es anterior a la boda (ajuste de seguridad)
+            if (now < weddingDate) {
+                container.innerHTML = `<div class="text-xl font-light uppercase tracking-widest">¡Llegó el gran día!</div>`;
+                return;
+            }
+
+            // Variables para calcular la diferencia exacta del calendario
+            let years = now.getFullYear() - weddingDate.getFullYear();
+            let months = now.getMonth() - weddingDate.getMonth();
+            let days = now.getDate() - weddingDate.getDate();
+
+            // Ajuste si los días actuales son menores a los días de la fecha de la boda
+            if (days < 0) {
+                // Tomamos los días totales del mes anterior
+                const previousMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+                days += previousMonth;
+                months--;
+            }
+
+            // Ajuste si los meses actuales son menores a los meses de la fecha de la boda
+            if (months < 0) {
+                months += 12;
+                years--;
+            }
+
+            // Renderizado estético adaptado a tu diseño original
             container.innerHTML = `
-                <div class="mb-2 border-b border-white/20 pb-2 w-full"><span class="text-4xl md:text-6xl font-light">${d}</span><span class="text-xs ml-2 uppercase">Días</span></div>
-                <div class="flex items-center text-xl md:text-3xl font-mono">
-                    <span>${h}</span><span class="mx-1 opacity-40">:</span><span>${m}</span><span class="mx-1 opacity-40">:</span><span class="text-stone-400">${s}</span>
-                </div>`;
+                <div class="text-xs uppercase tracking-[0.2em] opacity-75 mb-3 font-semibold text-stone-300">Tiempo de Casados</div>
+                <div class="flex flex-col gap-2 w-full text-left">
+                    <div class="flex justify-between items-center border-b border-white/10 pb-1">
+                        <span class="text-2xl md:text-3xl font-light">${years}</span>
+                        <span class="text-xs uppercase tracking-wider opacity-80">${years === 1 ? 'Año' : 'Años'}</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-white/10 pb-1">
+                        <span class="text-2xl md:text-3xl font-light">${months}</span>
+                        <span class="text-xs uppercase tracking-wider opacity-80">${months === 1 ? 'Mes' : 'Meses'}</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl md:text-3xl font-light">${days}</span>
+                        <span class="text-xs uppercase tracking-wider opacity-80">${days === 1 ? 'Día' : 'Días'}</span>
+                    </div>
+                </div>
+            `;
         }
-        setInterval(updateCountdown, 1000); updateCountdown();
+        
+        // Se ejecuta cada hora para mantener el contador al día sin consumir recursos innecesarios
+        setInterval(updateCountdown, 3600000); 
+        updateCountdown();
     </script>
 </body>
 </html>
